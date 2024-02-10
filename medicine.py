@@ -15,3 +15,7 @@ if __name__ == "__main__":
     
 health = Medicine(med_type, duration)
 print("medication data saved!")
+print("Medicine Type:", health.med_type)
+print("Date Given:", health.date_given)
+print("Duration:", health.duration, "days")
+print("Medication End Date:", health.med_end)
