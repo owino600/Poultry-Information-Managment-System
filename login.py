@@ -12,7 +12,7 @@ if __name__ == "__main__":
     email = input("Enter Email: ")
     password = input("Enter Password: ")
     print("Inputs collected...")
-        
+    
 create_account = User_sign(username, email, password)
 print("User account created...")
 print("hello, welcome to kuku-poa")
