@@ -13,5 +13,5 @@ if __name__ == "__main__":
     med_type = input("Medicine Issued: ")
     duration = input("Medication Duration: ")
     
-    health = Medicine(med_type, duration)
-    print("medication data saved!")
+health = Medicine(med_type, duration)
+print("medication data saved!")
