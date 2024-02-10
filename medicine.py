@@ -11,7 +11,7 @@ class Medicine():
         
 if __name__ == "__main__":
     med_type = input("Medicine Issued: ")
-    duration = input("Medication Duration: ")
+    duration = int(input("Medication Duration (days): "))
     
 health = Medicine(med_type, duration)
 print("medication data saved!")
