@@ -2,6 +2,7 @@
 """Base_model"""
 from datetime import datetime
 import uuid
+import models
 from sqlalchemy import Column, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 

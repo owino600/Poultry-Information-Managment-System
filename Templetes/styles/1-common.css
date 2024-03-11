@@ -1,11 +1,37 @@
 body{
-    background-image: url("../images/image1.jpg");
-    /*background-repeat: no-repeat;*/
-    background-size: cover;
-	margin: 0;
-	padding: 0;
-	color: gray;
-    height: 100%;
-	font-size: 14px;
-	font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-image: url("../images/poultry2.jpg");
+    background-repeat: no-repeat;
+    background-size: 70%;
+	background-position: center;
+	background-attachment: fixed;
+	background-color: gray;
+    /*height: 100%;*/
+	/*font-size: 14px;*/
+}
+
+.search-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 6px;
+}
+
+.search-button {
+    float: left;
+    width: 4%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+.search-input {
+    padding: 10px;
+    font-size: 17px;
+    border: none;
+    float: left;
+    width: 20%; /* Increase this value as needed */
+    background: #f1f1f1;
 }
