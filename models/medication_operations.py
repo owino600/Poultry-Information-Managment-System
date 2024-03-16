@@ -6,9 +6,17 @@ from models.base_model import BaseModel
 class Medication(BaseModel):
     __tablename__ = "medication"
     poultry_id = Column(String(60), nullable=True)
-    medicine = Column(String(128), nullable=False)
-    Poultry_class = Column(String(60), nullable=False)
-    date_medicated = Column(DateTime, default=models.base_model.datetime.utcnow)
+    species = Column(String(60), nullable=False)
+    quantity = Column(int(20), nullable=False)
+    ageweeks = Column(int(20), nullable=False)
+    dateofmedication = Column(DateTime, default=models.base_model.datetime.utcnow)
+    madecationname = Column(String(128), nullable= False)
+    dosage = Column(String(50), nullable=False)
+    medicationtype = Column(String(50), nullable=False)
+    withdrawalperiod = Column(String(128), nullable=False)
+    supplier = Column(String(128), nullable=True)
+    cost = Column(int(50), nullable=False)
+    
     def __init__(self, *args, **kwargs):
         """initialize medication"""
         super().__init__(*args, **kwargs)
