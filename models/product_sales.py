@@ -1,12 +1,19 @@
 #!/usr/bin/python3
 import models
 from models.base_model import BaseModel
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String, Integer, DateTime, Float, Enum
 class Sales(BaseModel):
     __tablename__= 'product_sales'
-    product_id = Column(String(60), nullable=False)
-    product_name = Column(String(60), nullable=False)
-    product_type = Column(String(128), nullable=False)
+    Sales_id = Column(Integer(60), nullable=False)
+    sales_date = Column(DateTime, default=models.base_model.datetime.utcnow)
+    buyer_name = Column(String(60), nullable=False)
+    poultry_id = Column(Integer(50), nullable=False)
+    quantity = Column(Integer(50), nullable=False)
+    unit_price = Column(Float(18,0), nullable=False)
+    total_price = Column(Float(18,0), nullable=False)
+    payment_method = Column(Enum('Cash', 'Credit', 'Debit', 'Online Transfer', 'Check'), nullable=False)
+    
+    
     def __init__(self, *args, **kwargs):
         """initialize sales"""
         super().__init__(*args, **kwargs)
@@ -23,13 +30,3 @@ class Sales(BaseModel):
             float: Total revenue from the sale.
         """
         return unit_price * quantity_sold
-
-# Example usage:
-if __name__ == "__main__":
-    # Create a sales record
-    sale = Sales(product_id="123", product_name="Chicken Feed", product_type="Feed")
-    unit_price = 10.0  # Price per bag of chicken feed
-    quantity_sold = 50  # Number of bags sold
-
-    total_revenue = sale.calculate_total_revenue(unit_price, quantity_sold)
-    print(f"Total revenue from sales: ${total_revenue:.2f}")
