@@ -158,3 +158,32 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(old_created_at, new_created_at)
         self.assertTrue(mock_storage.new.called)
         self.assertTrue(mock_storage.save.called)
+        
+    def test_save_method(self):
+        """Test the save method of BaseModel"""
+        inst = BaseModel()
+        old_updated_at = inst.updated_at
+        time.sleep(1e-4)  # sleep for a tiny bit to ensure the time has changed
+        inst.save()
+        self.assertNotEqual(old_updated_at, inst.updated_at)
+
+    def test_to_dict_method(self):
+        """Test the 'to_dict' method of BaseModel"""
+        inst = BaseModel()
+        inst_dict = inst.to_dict()
+        self.assertEqual(inst_dict["id"], inst.id)
+        self.assertEqual(inst_dict["created_at"], inst.created_at)
+        self.assertEqual(inst_dict["updated_at"], inst.updated_at)
+
+    def test_str_method(self):
+        """Test the '__str__' method of BaseModel"""
+        inst = BaseModel()
+        expected_str = f"[{inst.__class__.__name__}] ({inst.id}) {inst.__dict__}"
+        self.assertEqual(str(inst), expected_str)
+
+    def test_init_method(self):
+        """Test the '__init__' method of BaseModel"""
+        inst = BaseModel(id="123", created_at="2022-01-01T00:00:00.000000", updated_at="2022-01-01T00:00:00.000000")
+        self.assertEqual(inst.id, "123")
+        self.assertEqual(inst.created_at, datetime.strptime("2022-01-01T00:00:00.000000", time_format))
+        self.assertEqual(inst.updated_at, datetime.strptime("2022-01-01T00:00:00.000000", time_format))
