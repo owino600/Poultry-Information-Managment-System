@@ -3,7 +3,7 @@
 import models
 from models.base_model import BaseModel, Base
 from medication_operations import Medication
-from product_sales import Sales
+from sales import Sales
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 import os

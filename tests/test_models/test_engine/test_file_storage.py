@@ -5,15 +5,19 @@ Contains the TestFileStorageDocs classes
 
 from datetime import datetime
 import inspect
-import models
+from models.base_model import BaseModel
 from models.engine import file_storage
 import json
+from models.sales import Sales
+from models.medication_operations import Medication
+from models.inventory import Inventory
+import models
 import os
 import pep8
 import unittest
 FileStorage = file_storage.FileStorage
-classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
-           "Place": Place, "Review": Review, "State": State, "User": User}
+classes = {"sales": Sales, "BaseModel": BaseModel, "medication_operation": Medication,
+           "Inventory": Inventory}
 
 
 class TestFileStorageDocs(unittest.TestCase):
