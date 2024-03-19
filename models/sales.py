@@ -18,7 +18,7 @@ class Sales(BaseModel):
         """initialize sales"""
         super().__init__(*args, **kwargs)
         
-    def calculate_total_revenue(self, unit_price, quantity_sold):
+    def calculate_total_revenue(self):
         """
         Calculate total revenue for a product sale.
 
