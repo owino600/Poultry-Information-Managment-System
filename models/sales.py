@@ -18,7 +18,7 @@ class Sales(BaseModel):
         """initialize sales"""
         super().__init__(*args, **kwargs)
         
-    def calculate_total_revenue(self):
+    def calculate_total_revenue(self, unit_price, quantity_sold):
         """
         Calculate total revenue for a product sale.
 
@@ -29,4 +29,7 @@ class Sales(BaseModel):
         Returns:
             float: Total revenue from the sale.
         """
-        return self.unit_price * self.quantity_sold
+        self.unit_price = unit_price
+        self.quantity_sold = quantity_sold
+        
+        return unit_price * quantity_sold
