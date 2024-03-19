@@ -2,8 +2,8 @@
 """ track the poultry cycle from birth to ready market"""
 from datetime import datetime
 
-import models
 from models.base_model import BaseModel
+import models
 from sqlalchemy import Column, String, Integer, DateTime, Float, Text
 
 class Inventory(BaseModel):
