@@ -10,6 +10,11 @@ time_format = "%Y-%m-%dT%H:%M:%S.%f"
 
 Base = declarative_base()
 
+if models.storage_t == "db":
+    Base = declarative_base()
+else:
+    Base = object
+    
 class BaseModel:
     """The BaseModel class for poultry management"""
     if models.storage_t == "db":
