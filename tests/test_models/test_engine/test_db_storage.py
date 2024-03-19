@@ -5,7 +5,7 @@ import unittest
 from models import storage
 from models.base_model import BaseModel
 from models.medication_operations import Medication
-from models.product_sales import Sales
+from models.inventory import Inventory
 
 class TestDBStorage(unittest.TestCase):
     """Test the DBStorage class"""
