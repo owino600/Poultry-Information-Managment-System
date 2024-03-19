@@ -6,7 +6,7 @@ from models.medication_operations import Medication
 from models.sales import Sales
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
-import os
+from os import getenv
 
 classes = {"medication_operation": Medication, "product_sales": Sales}
 class DBStorage:
@@ -16,7 +16,16 @@ class DBStorage:
     
     def __init__(self):
         """instantiate a DBStorage"""
-        self.__engine = create_engine('mysql+mysqlconnector://{}:{}@{}/{}'.format())
+        PIMS_MYSQL_USER = getenv('PIMS_MYSQL_USER')
+        PIMS_MYSQL_PWD = getenv('PIMS_MYSQL_PWD')
+        PIMS_MYSQL_HOST = getenv('PIMS_MYSQL_HOST')
+        PIMS_MYSQL_DB = getenv('PIMS_MYSQL_DB')
+        PIMS_ENV = getenv('PIMS_ENV')
+        self.__engine = create_engine('mysql+mysqlconnector://{}:{}@{}/{}'.format
+                                      (PIMS_MYSQL_USER,
+                                        PIMS_MYSQL_PWD,
+                                        PIMS_MYSQL_HOST,
+                                        PIMS_MYSQL_DB))
     def all(self, cls=None):
         """create query on the current database session"""
         new_dict = {}
