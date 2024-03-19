@@ -16,8 +16,8 @@ class TestSales(unittest.TestCase):
         self.assertEqual(self.sale.total_price, 100.0)
         self.assertEqual(self.sale.payment_method, 'Cash')
 
-    def test_calculate_total_revenue(self):
-        self.assertEqual(self.sale.calculate_total_revenue(), 100.0)
+    def test_calculate_total_revenue(self, unit_price, quantity_sold):
+        self.assertEqual(self.sale.calculate_total_revenue(unit_price, quantity_sold), 100.0)
 
 if __name__ == '__main__':
     unittest.main()
