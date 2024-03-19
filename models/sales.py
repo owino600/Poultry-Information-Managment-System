@@ -4,7 +4,7 @@ from models.base_model import BaseModel
 from sqlalchemy import Column, String, Integer, DateTime, Float, Enum
 class Sales(BaseModel):
     __tablename__= 'product_sales'
-    Sales_id = Column(Integer(60), nullable=False)
+    Sales_id = Column(Integer(), nullable=False)
     sales_date = Column(DateTime, default=models.base_model.datetime.utcnow)
     buyer_name = Column(String(60), nullable=False)
     poultry_id = Column(Integer(), nullable=False)
