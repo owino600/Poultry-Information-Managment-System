@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from sqlalchemy import Column, String, DateTime, Integer
-import models
 from models.base_model import BaseModel
+import models
 """medication_operations.py"""
 class Medication(BaseModel):
     __tablename__ = "medication"
