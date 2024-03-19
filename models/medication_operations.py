@@ -15,7 +15,7 @@ class Medication(BaseModel):
     medicationtype = Column(String(50), nullable=False)
     withdrawalperiod = Column(String(128), nullable=False)
     supplier = Column(String(128), nullable=True)
-    cost = Column(int(50), nullable=False)
+    cost = Column(Integer(), nullable=False)
     
     def __init__(self, *args, **kwargs):
         """initialize medication"""
