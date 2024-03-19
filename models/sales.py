@@ -29,4 +29,4 @@ class Sales(BaseModel):
         Returns:
             float: Total revenue from the sale.
         """
-        return unit_price * quantity_sold
+        return self.unit_price * self.quantity_sold
