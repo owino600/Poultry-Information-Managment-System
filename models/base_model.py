@@ -29,9 +29,11 @@ class BaseModel:
             for key, value in kwargs.items():
                 if key != "__class__":
                     setattr(self, key, value)
-            created_at = kwargs.get("created_at", datetime.utcnow().strftime(time_format))
+            created_at = kwargs.get(
+                "created_at", datetime.utcnow().strftime(time_format))
             self.created_at = datetime.strptime(created_at, time_format)
-            updated_at = kwargs.get("updated_at", datetime.utcnow().strftime(time_format))
+            updated_at = kwargs.get(
+                "updated_at", datetime.utcnow().strftime(time_format))
             self.updated_at = datetime.strptime(updated_at, time_format)
             self.id = kwargs.get("id", str(uuid.uuid4()))
         else:
