@@ -40,7 +40,7 @@ class DBStorage:
     def reload(self):
         """relaod data from database"""
         Base.metadata.create_all(self.__engine)
-        sess_factory = sessionmaker(bind=self.engine, expire_on_commit=False)
+        sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sess_factory)
         self.__session = Session
     def close(self):
