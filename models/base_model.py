@@ -48,7 +48,7 @@ else:
     def save(self):
         """Updates the 'updated_at' attribute with the current datetime"""
         self.updated_at = datetime.utcnow()
-        models.storage.new(self)  # Add this line to call the new method of storage
+        models.storage.new(self)
 
     def to_dict(self):
         """Converts the instance to a dictionary"""
