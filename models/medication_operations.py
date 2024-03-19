@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from sqlalchemy import Column, String, DateTime
+from sqlalchemy import Column, String, DateTime, Integer
 import models
 from models.base_model import BaseModel
 """medication_operations.py"""
@@ -7,8 +7,8 @@ class Medication(BaseModel):
     __tablename__ = "medication"
     poultry_id = Column(String(60), nullable=True)
     species = Column(String(60), nullable=False)
-    quantity = Column(int(20), nullable=False)
-    ageweeks = Column(int(20), nullable=False)
+    quantity = Column(Integer(), nullable=False)
+    ageweeks = Column(Integer(), nullable=False)
     dateofmedication = Column(DateTime, default=models.base_model.datetime.utcnow)
     madecationname = Column(String(128), nullable= False)
     dosage = Column(String(50), nullable=False)
