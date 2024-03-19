@@ -2,7 +2,7 @@
 import unittest
 from datetime import datetime
 from models.base_model import BaseModel
-from models.sales import Sales
+from models.inventory import Inventory
 
 class TestSales(unittest.TestCase):
     def setUp(self):

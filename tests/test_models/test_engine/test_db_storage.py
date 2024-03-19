@@ -6,6 +6,7 @@ from models import storage
 from models.base_model import BaseModel
 from models.medication_operations import Medication
 from models.inventory import Inventory
+from models.engine import db_storage
 
 class TestDBStorage(unittest.TestCase):
     """Test the DBStorage class"""
