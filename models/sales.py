@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-import models
+
 from models.base_model import BaseModel
+import models
 from sqlalchemy import Column, String, Integer, DateTime, Float, Enum
 class Sales(BaseModel):
     __tablename__= 'product_sales'
