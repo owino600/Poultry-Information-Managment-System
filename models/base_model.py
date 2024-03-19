@@ -29,8 +29,9 @@ class BaseModel:
                 if key != "__class__":
                     setattr(self, key, value)
             # Convert string timestamps to datetime objects
-            self.created_at = datetime.strptime(kwargs.get("created_at", datetime.utcnow()), time_format)
-            self.updated_at = datetime.strptime(kwargs.get("updated_at", datetime.utcnow()), time_format)
+             # Convert string timestamps to datetime objects
+            self.created_at = datetime.strptime(kwargs.get("created_at", datetime.utcnow().strftime(time_format)), time_format)
+            self.updated_at = datetime.strptime(kwargs.get("updated_at", datetime.utcnow().strftime(time_format)), time_format)
             # Generate a new UUID if not provided
             self.id = kwargs.get("id", str(uuid.uuid4()))
         else:
