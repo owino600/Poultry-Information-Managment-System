@@ -10,6 +10,7 @@ time_format = "%Y-%m-%dT%H:%M:%S.%f"
 
 Base = declarative_base() if models.storage_t == "db" else object
 
+
 class BaseModel(Base):
     """The BaseModel class for poultry management"""
     if models.storage_t == "db":
@@ -25,7 +26,7 @@ class BaseModel(Base):
                     value = datetime.strptime(value, time_format)
                 if key != "__class__":
                     setattr(self, key, value)
-                    
+
             created_at = kwargs.get(
                 "created_at", datetime.utcnow().strftime(time_format))
             self.created_at = datetime.strptime(created_at, time_format)
@@ -57,12 +58,9 @@ class BaseModel(Base):
             # Add other attributes specific to your project
         }
 
-    # Add any other methods or features relevant to poultry management
-    # ...
-
-# Example usage:
-if __name__ == "__main__":
-    poultry = BaseModel(name="Chicken A", age_in_days=30, breed="Leghorn")
-    print(poultry)
-    poultry.save()
-    print(poultry.to_dict())
+        if __name__ == "__main__":
+            poultry = BaseModel(
+                    name="Chicken A", age_in_days=30, breed="Leghorn")
+            print(poultry)
+            poultry.save()
+            print(poultry.to_dict())
