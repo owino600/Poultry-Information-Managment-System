@@ -16,8 +16,9 @@ import os
 import pep8
 import unittest
 FileStorage = file_storage.FileStorage
-classes = {"sales": Sales, "BaseModel": BaseModel, "medication_operation": Medication,
-           "Inventory": Inventory}
+classes = {
+        "sales": Sales, "BaseModel": BaseModel,
+        "medication_operation": Medication, "Inventory": Inventory}
 
 
 class TestFileStorageDocs(unittest.TestCase):

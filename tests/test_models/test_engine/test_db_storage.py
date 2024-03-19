@@ -13,6 +13,7 @@ storage = DBStorage()
 classes = {"Medication": Medication, "Inventory": Inventory, "Sales": Sales,
            "BaseModel": BaseModel}
 
+
 class TestDBStorage(unittest.TestCase):
     """Test the DBStorage class"""
 
@@ -65,5 +66,5 @@ class TestDBStorage(unittest.TestCase):
         retrieved_obj = self.storage.get(BaseModel, obj.id)
         self.assertEqual(obj, retrieved_obj)
 
-if __name__ == "__main__":
-    unittest.main()
+        if __name__ == "__main__":
+            unittest.main()
