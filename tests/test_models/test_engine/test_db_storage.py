@@ -9,7 +9,6 @@ from models.inventory import Inventory
 from models.sales import Sales
 from models.engine.db_storage import DBStorage
 
-DBStorage = db_storage.DBStorage
 classes = {"Medication": Medication, "Inventory": Inventory, "Sales": Sales,
            "BaseModel": BaseModel}
 
