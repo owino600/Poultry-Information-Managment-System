@@ -21,6 +21,8 @@ class BaseModel(Base):
         """Initialization of the base model"""
         if kwargs:
             for key, value in kwargs.items():
+                if key == "created_at" or key == "updated_at":
+                    value = datetime.strptime(value, time_format)
                 if key != "__class__":
                     setattr(self, key, value)
                     
