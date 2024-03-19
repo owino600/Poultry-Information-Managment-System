@@ -8,19 +8,14 @@ from sqlalchemy.ext.declarative import declarative_base
 
 time_format = "%Y-%m-%dT%H:%M:%S.%f"
 
-Base = declarative_base()
+Base = declarative_base() if models.storage_t == "db" else object
 
-if models.storage_t == "db":
-    Base = declarative_base()
-else:
-    Base = object
-
-    class BaseModel:
-        """The BaseModel class for poultry management"""
-        if models.storage_t == "db":
-            id = Column(String(60), primary_key=True)
-            created_at = Column(DateTime, default=datetime.utcnow)
-            updated_at = Column(DateTime, default=datetime.utcnow)
+class BaseModel(Base):
+    """The BaseModel class for poultry management"""
+    if models.storage_t == "db":
+        id = Column(String(60), primary_key=True)
+        created_at = Column(DateTime, default=datetime.utcnow)
+        updated_at = Column(DateTime, default=datetime.utcnow)
 
     def __init__(self, *args, **kwargs):
         """Initialization of the base model"""
@@ -28,7 +23,7 @@ else:
             for key, value in kwargs.items():
                 if key != "__class__":
                     setattr(self, key, value)
-
+                    
             created_at = kwargs.get(
                 "created_at", datetime.utcnow().strftime(time_format))
             self.created_at = datetime.strptime(created_at, time_format)
