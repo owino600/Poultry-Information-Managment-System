@@ -29,10 +29,10 @@ class TestBaseModelDocs(unittest.TestCase):
 
     def test_module_docstring(self):
         """Test for the existence of module docstring"""
-        self.assertIsNot(module_doc, None,
-                         "base_model.py needs a docstring")
-        self.assertTrue(len(module_doc) > 1,
-                        "base_model.py needs a docstring")
+        self.assertIsNot(
+                module_doc, None, "base_model.py needs a docstring")
+        self.assertTrue(
+                len(module_doc) > 1, "base_model.py needs a docstring")
 
     def test_class_docstring(self):
         """Test for the BaseModel class docstring"""
@@ -105,4 +105,13 @@ class TestBaseModel(unittest.TestCase):
             uuid = inst.id
             with self.subTest(uuid=uuid):
                 self.assertIs(type(uuid), str)
-                self.assertRegex(uuid, r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$')
+                self.assertRegex(
+                        uuid,
+                        (
+                            r'^[0-9a-f]{8}-'
+                            r'[0-9a-f]{4}-'
+                            r'[0-9a-f]{4}-'
+                            r'[0-9a-f]{4}-'
+                            r'[0-9a-f]{12}$'
+                            )
+                        )
