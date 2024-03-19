@@ -5,7 +5,8 @@ from datetime import datetime
 import models
 from models.base_model import BaseModel
 from sqlalchemy import Column, String, Integer, DateTime, Float, Text
-class Sales(BaseModel):
+
+class Inventory(BaseModel):
     __tablename__= 'product_sales'
     Product_id = Column(Integer(60), primary_key=True, nullable=False)
     Product_name = Column(String(60), nullable=False)

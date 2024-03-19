@@ -4,16 +4,13 @@ Contains the FileStorage class
 """
 
 import json
-from models.amenity import Amenity
+from models.inventory import Inventory
 from models.base_model import BaseModel
-from models.city import City
-from models.place import Place
-from models.review import Review
-from models.state import State
-from models.user import User
+from models.sales import Sales
+from models.medication_operations import Medication
 
-classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
-           "Place": Place, "Review": Review, "State": State, "User": User}
+classes = {"Inventory": Inventory, "BaseModel": BaseModel, "Sales":Sales,
+           "Medication": Medication}
 
 
 class FileStorage:
