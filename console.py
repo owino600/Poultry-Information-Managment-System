@@ -79,7 +79,7 @@ def view_sales():
     sales = session.all(models.sales.Sales)
     """Print each sale"""
     for sale in sales.values():
-        print(f"Sales ID: {sale.sales_id}")
+        print(f"Sales ID: {sale.Sales_id}")
         print(f"Sales Date: {sale.sales_date}")
         print(f"Buyer Name: {sale.buyer_name}")
         print(f"Poultry ID: {sale.poultry_id}")
