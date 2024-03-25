@@ -16,6 +16,6 @@ class Inventory(BaseModel):
     quantity = Column(Integer(), nullable=False)
     unit_price = Column(Float(50), nullable=False)
     supplier = Column(String(128), nullable=True)
-    date_received = Column(DateTime, default=models.base_model.datetime.utcnow)
+    date_received = Column(DateTime, default=datetime.utcnow)
     Expiration_date = Column(
-            DateTime, default=models.base_model.datetime.utcnow)
+            DateTime, default=datetime.utcnow)

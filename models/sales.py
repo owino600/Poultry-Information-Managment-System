@@ -9,7 +9,7 @@ from datetime import datetime
 class Sales(BaseModel):
     __tablename__ = 'sales'
     Sales_id = Column(Integer(), nullable=False)
-    sales_date = Column(datetime, default=models.base_model.datetime.utcnow)
+    sales_date = Column(datetime, default=datetime.utcnow)
     buyer_name = Column(String(60), nullable=False)
     poultry_id = Column(Integer(), nullable=False)
     quantity = Column(Integer(), nullable=False)
