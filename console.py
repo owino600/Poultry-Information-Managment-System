@@ -63,7 +63,7 @@ def add_sale():
     payment_method = input("Please enter the Payment Method: ")
 
     # Create a new Sale object
-    new_sale = models.Sales(sales_id=sales_id, sales_date=sales_date, buyer_name=buyer_name, poultry_id=poultry_id, quantity=quantity, unit_price=unit_price, total_price=total_price, payment_method=payment_method)
+    new_sale = models.sales(sales_id=sales_id, sales_date=sales_date, buyer_name=buyer_name, poultry_id=poultry_id, quantity=quantity, unit_price=unit_price, total_price=total_price, payment_method=payment_method)
 
     # Add the new Sale object to the storage
     session.new(new_sale)
