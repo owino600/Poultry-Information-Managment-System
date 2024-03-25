@@ -1,0 +1,20 @@
+{
+    "Inventory.001": {
+        "__class__": "Inventory",
+        "id": "001",
+        "attribute1": "value1",
+        "attribute2": "value2"
+    },
+    "Sales.001": {
+        "__class__": "Sales",
+        "id": "001",
+        "attribute1": "value1",
+        "attribute2": "value2"
+    },
+    "Medication.001": {
+        "__class__": "Medication",
+        "id": "001",
+        "attribute1": "value1",
+        "attribute2": "value2"
+    }
+}
