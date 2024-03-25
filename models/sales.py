@@ -3,7 +3,7 @@
 from models.base_model import BaseModel
 from datetime import datetime
 import models
-from sqlalchemy import Column, String, Integer, Float, Enum
+from sqlalchemy import Column, String, Integer, Float, Enum, DateTime
 
 
 
