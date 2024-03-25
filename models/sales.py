@@ -3,13 +3,13 @@
 from models.base_model import BaseModel
 import models
 from sqlalchemy import Column, String, Integer, Float, Enum
-from datetime import DateTime
+from datetime import datetime
 
 
 class Sales(BaseModel):
     __tablename__ = 'sales'
     Sales_id = Column(Integer(), nullable=False)
-    sales_date = Column(DateTime, default=models.base_model.datetime.utcnow)
+    sales_date = Column(datetime, default=models.base_model.datetime.utcnow)
     buyer_name = Column(String(60), nullable=False)
     poultry_id = Column(Integer(), nullable=False)
     quantity = Column(Integer(), nullable=False)
