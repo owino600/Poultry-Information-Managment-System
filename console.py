@@ -1,6 +1,6 @@
 #!/bin/usr/python3
 """ poultry management console"""
-from models import DBStorage
+from models.engine.db_storage import DBStorage
 import models
 
 def main():
