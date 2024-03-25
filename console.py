@@ -76,7 +76,7 @@ def add_sale():
 
     # Add the new Sale object to the storage
     session.new(new_sale)
-    session.save()
+    session.commit()
 def view_sales():
     session = models.storage
     """Query all sales"""
