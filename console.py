@@ -71,7 +71,7 @@ def add_sale():
 def view_sales():
     session = models.storage
     """Query all sales"""
-    sales = session.all(models.sales)
+    sales = session.all(models.sales.Sales)
     """Print each sale"""
     for sale in sales.values():
         print(f"Sales ID: {sale.Sales_id}")
