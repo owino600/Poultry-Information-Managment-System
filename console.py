@@ -28,10 +28,11 @@ def main():
         print("Welcome to the Poultry Information Management System (PIMS)")
         print("Please select an option:")
         print("1. View Inventory")
-        print("2. View Sales")
-        print("3. add Sales")
-        print("4. View Medication Operations")
-        print("5. Exit")
+        print("2. add Sales")
+        print("3. View Sales")
+        print("4. Add medication")
+        print("5. View Medication Operations")
+        print("6. Exit")
 
         option = input("> ")
 
@@ -41,13 +42,15 @@ def main():
             view_inventory()
         elif option == "2":
             # Call the function to view sales
-            view_sales()
-        elif option == "3":
             add_sale()
+        elif option == "3":
+            view_sales()
         elif option == "4":
             # Call the function to view medication operations
-            view_medication_operations()
+            add_medication()
         elif option == "5":
+            view_medication_operations()
+        elif option == "6":
             break
         else:
             print("Invalid option. Please try again.")
