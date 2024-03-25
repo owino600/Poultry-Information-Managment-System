@@ -112,7 +112,7 @@ def add_medication():
     
     new_medication = models.medication_operations.Medication(poultry_id=poultry_id, species=species, quantity=quantity, ageweeks=ageweeks, dateofmedication=dateofmedication, medecation_name=medecation_name, dosage=dosage, medicationtype=medicationtype, withdrawalperiod=withdrawalperiod, supplier=supplier, cost=cost)
     
-    session.add(new_medication)
+    session.new(new_medication)
     session.commit()
 
     
