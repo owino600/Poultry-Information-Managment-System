@@ -2,7 +2,8 @@
 
 from models.base_model import BaseModel
 import models
-from sqlalchemy import Column, String, Integer, DateTime, Float, Enum
+from sqlalchemy import Column, String, Integer, Float, Enum
+from datetime import DateTime
 
 
 class Sales(BaseModel):
