@@ -7,7 +7,7 @@ from datetime import DateTime
 
 
 class Sales(BaseModel):
-    __tablename__ = 'product_sales'
+    __tablename__ = 'sales'
     Sales_id = Column(Integer(), nullable=False)
     sales_date = Column(DateTime, default=models.base_model.datetime.utcnow)
     buyer_name = Column(String(60), nullable=False)
