@@ -23,8 +23,9 @@ def main():
         print("Please select an option:")
         print("1. View Inventory")
         print("2. View Sales")
-        print("3. View Medication Operations")
-        print("4. Exit")
+        print("3. add Sales")
+        print("4. View Medication Operations")
+        print("5. Exit")
 
         option = input("> ")
 
