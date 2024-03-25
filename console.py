@@ -38,7 +38,7 @@ def view_inventory():
 def view_sales():
     session = models.storage
     """Query all sales"""
-    sales = session.all(models.Sales)
+    sales = session.all(models.sales)
     
     """Print each sale"""
     for sale in sales.values():
@@ -56,7 +56,7 @@ def view_medication_operations():
     session = models.storage
 
     # Query all medication operations
-    medications = session.all(models.Medication)
+    medications = session.all(models.medication_operations)
 
     # Print each medication operation
     for medication in medications.values():
