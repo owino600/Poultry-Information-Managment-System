@@ -48,7 +48,25 @@ def view_sales():
         print("------------------------")
         pass
 def view_medication_operations():
-    # Use your Medication class here
+    session = models.DBStorage()
+
+    # Query all medication operations
+    medications = session.all(models.Medication)
+
+    # Print each medication operation
+    for medication in medications.values():
+        print(f"Poultry ID: {medication.poultry_id}")
+        print(f"Species: {medication.species}")
+        print(f"Quantity: {medication.quantity}")
+        print(f"Age in Weeks: {medication.ageweeks}")
+        print(f"Date of Medication: {medication.dateofmedication}")
+        print(f"Medication Name: {medication.medecation_name}")
+        print(f"Dosage: {medication.dosage}")
+        print(f"Medication Type: {medication.medicationtype}")
+        print(f"Withdrawal Period: {medication.withdrawalperiod}")
+        print(f"Supplier: {medication.supplier}")
+        print(f"Cost: {medication.cost}")
+        print("------------------------")
     pass
 if __name__ == "__main__":
     main()
