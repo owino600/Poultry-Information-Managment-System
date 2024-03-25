@@ -95,7 +95,7 @@ def view_sales():
         pass
 def add_medication():
     session = models.storage
-    medication_operation = session.all(models.medication_operation)
+    medication_operation = session.all(models.medication_operations)
     
     print("Please enter the medication details:")
     poultry_id = input("Enter poultry id: ")
