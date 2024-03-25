@@ -1,7 +1,7 @@
 #!/bin/usr/python3
 """ poultry management console"""
 from models import engine
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 from models.inventory import Inventory
 from models.medication_operations import Medication
 from models.sales import Sales
@@ -10,6 +10,8 @@ import models
 classes = {"Inventory": Inventory, "BaseModel": BaseModel, "Sales":Sales,
            "Medication": Medication}
 
+Base.metadata.create_all(engine)
+
 class FileStorage:
     """serializes instances to a JSON file & deserializes back to instances"""
 
@@ -17,6 +19,7 @@ class FileStorage:
     __file_path = "file.json"
     # dictionary - empty but will store all objects by <class name>.id
     __objects = {}
+     
 def main():
     while True:
         print("Welcome to the Poultry Information Management System (PIMS)")
