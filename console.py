@@ -6,6 +6,7 @@ from models.base_model import BaseModel, Base
 from models.inventory import Inventory
 from models.medication_operations import Medication
 from models.sales import Sales
+from datetime import datetime
 
 
 classes = {"Inventory": Inventory, "BaseModel": BaseModel, "Sales":Sales,
@@ -89,9 +90,31 @@ def view_sales():
         print(f"Payment Method: {sale.payment_method}")
         print("------------------------")
         pass
+def add_medication():
+    session = models.storage
+    medication_operation = session.all(models.medication_operation)
+    
+    print("Please enter the medication details:")
+    poultry_id = input("Enter poultry id: ")
+    species = input("Enter species: ")
+    quantity = int(input("Enter quantity: "))
+    ageweeks = int(input("Enter age in weeks: "))
+    dateofmedication = datetime.datetime.now()
+    medecation_name = input("Enter medication name: ")
+    dosage = input("Enter dosage: ")
+    medicationtype = input("Enter medication type: ")
+    withdrawalperiod = input("Enter withdrawal period: ")
+    supplier = input("Enter supplier: ")
+    cost = int(input("Enter cost: "))
+    
+    new_medication = models.Medication(poultry_id=poultry_id, species=species, quantity=quantity, ageweeks=ageweeks, dateofmedication=dateofmedication, medecation_name=medecation_name, dosage=dosage, medicationtype=medicationtype, withdrawalperiod=withdrawalperiod, supplier=supplier, cost=cost)
+    
+    session.add(new_medication)
+    session.commit()
+
+    
 def view_medication_operations():
     session = models.storage
-
     # Query all medication operations
     medications = session.all(models.medication_operations)
 
