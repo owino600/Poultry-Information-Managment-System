@@ -102,7 +102,7 @@ def add_medication():
     species = input("Enter species: ")
     quantity = int(input("Enter quantity: "))
     ageweeks = int(input("Enter age in weeks: "))
-    dateofmedication = datetime.datetime.now()
+    dateofmedication = datetime.now()
     medecation_name = input("Enter medication name: ")
     dosage = input("Enter dosage: ")
     medicationtype = input("Enter medication type: ")
