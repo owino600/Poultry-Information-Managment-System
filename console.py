@@ -32,7 +32,7 @@ def view_inventory():
     # Use your Inventory class here
     pass
 def view_sales():
-    session = models.storage()
+    session = models.storage
     """Query all sales"""
     sales = session.all(models.Sales)
     
@@ -49,7 +49,7 @@ def view_sales():
         print("------------------------")
         pass
 def view_medication_operations():
-    session = models.storage()
+    session = models.storage
 
     # Query all medication operations
     medications = session.all(models.Medication)
