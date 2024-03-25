@@ -11,7 +11,7 @@ from models.sales import Sales
 classes = {"Inventory": Inventory, "BaseModel": BaseModel, "Sales":Sales,
            "Medication": Medication}
 
-models.Base.metadata.create_all(engine)
+Base.metadata.create_all(engine)
 
 class FileStorage:
     """serializes instances to a JSON file & deserializes back to instances"""
