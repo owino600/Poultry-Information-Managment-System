@@ -7,6 +7,16 @@ from models.medication_operations import Medication
 from models.sales import Sales
 import models
 
+classes = {"Inventory": Inventory, "BaseModel": BaseModel, "Sales":Sales,
+           "Medication": Medication}
+
+class FileStorage:
+    """serializes instances to a JSON file & deserializes back to instances"""
+
+    # string - path to the JSON file
+    __file_path = "file.json"
+    # dictionary - empty but will store all objects by <class name>.id
+    __objects = {}
 def main():
     while True:
         print("Welcome to the Poultry Information Management System (PIMS)")
@@ -26,20 +36,41 @@ def main():
             # Call the function to view sales
             view_sales()
         elif option == "3":
+            add_sale()
+        elif option == "4":
             # Call the function to view medication operations
             view_medication_operations()
-        elif option == "4":
+        elif option == "5":
             break
         else:
             print("Invalid option. Please try again.")
 def view_inventory():
     # Use your Inventory class here
     pass
-def view_sales():
+def add_sale():
     session = models.storage
     """Query all sales"""
     sales = session.all(models.sales)
     
+    sales_id = input("Please enter the Sales ID: ")
+    sales_date = input("Please enter the Sales Date: ")
+    buyer_name = input("Please enter the Buyer Name: ")
+    poultry_id = input("Please enter the Poultry ID: ")
+    quantity = input("Please enter the Quantity: ")
+    unit_price = input("Please enter the Unit Price: ")
+    total_price = input("Please enter the Total Price: ")
+    payment_method = input("Please enter the Payment Method: ")
+
+    # Create a new Sale object
+    new_sale = models.Sales(sales_id=sales_id, sales_date=sales_date, buyer_name=buyer_name, poultry_id=poultry_id, quantity=quantity, unit_price=unit_price, total_price=total_price, payment_method=payment_method)
+
+    # Add the new Sale object to the storage
+    session.new(new_sale)
+    session.save()
+def view_sales():
+    session = models.storage
+    """Query all sales"""
+    sales = session.all(models.Sales)
     """Print each sale"""
     for sale in sales.values():
         print(f"Sales ID: {sale.Sales_id}")
