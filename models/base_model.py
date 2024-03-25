@@ -58,9 +58,9 @@ class BaseModel(Base):
             # Add other attributes specific to your project
         }
 
-        if __name__ == "__main__":
-            poultry = BaseModel(
-                    name="Chicken A", age_in_days=30, breed="Leghorn")
-            print(poultry)
-            poultry.save()
-            print(poultry.to_dict())
+            #if __name__ == "__main__":
+            #poultry = BaseModel(
+                #name="Chicken A", age_in_days=30, breed="Leghorn")
+            #print(poultry)
+            #poultry.save()
+            #print(poultry.to_dict())
