@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 from sqlalchemy import Column, String, DateTime, Integer
 from models.base_model import BaseModel
+from datetime import datetime
 import models
 """medication_operations.py"""
 
@@ -13,8 +14,7 @@ class Medication(BaseModel):
             Integer(), nullable=False)
     ageweeks = Column(
             Integer(), nullable=False)
-    dateofmedication = Column(
-            DateTime, default=models.base_model.datetime.utcnow)
+    dateofmedication = Column(DateTime, default=datetime.utcnow)
     medecation_name = Column(String(128), nullable=False)
     dosage = Column(String(50), nullable=False)
     medicationtype = Column(String(50), nullable=False)
