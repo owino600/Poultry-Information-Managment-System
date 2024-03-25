@@ -110,7 +110,7 @@ def add_medication():
     supplier = input("Enter supplier: ")
     cost = int(input("Enter cost: "))
     
-    new_medication = models.medication_operations.Medication(poultry_id=poultry_id, species=species, quantity=quantity, ageweeks=ageweeks, dateofmedication=dateofmedication, medecation_name=medecation_name, dosage=dosage, medicationtype=medicationtype, withdrawalperiod=withdrawalperiod, supplier=supplier, cost=cost)
+    new_medication = Medication(poultry_id=poultry_id, species=species, quantity=quantity, ageweeks=ageweeks, dateofmedication=dateofmedication, medecation_name=medecation_name, dosage=dosage, medicationtype=medicationtype, withdrawalperiod=withdrawalperiod, supplier=supplier, cost=cost)
     
     session.new(new_medication)
     session.commit()
