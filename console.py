@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """ poultry management console"""
-import models
 from models import engine
 from models.base_model import BaseModel, Base
 from models.inventory import Inventory
