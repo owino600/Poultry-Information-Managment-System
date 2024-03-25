@@ -1,11 +1,12 @@
 #!/bin/usr/python3
 """ poultry management console"""
+import models
 from models import engine
 from models.base_model import BaseModel, Base
 from models.inventory import Inventory
 from models.medication_operations import Medication
 from models.sales import Sales
-import models
+
 
 classes = {"Inventory": Inventory, "BaseModel": BaseModel, "Sales":Sales,
            "Medication": Medication}
