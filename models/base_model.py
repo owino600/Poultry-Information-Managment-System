@@ -14,6 +14,7 @@ Base = declarative_base() if models.storage_t == "db" else object
 class BaseModel(Base):
     """The BaseModel class for poultry management"""
     if models.storage_t == "db":
+        __tablename__ = 'base_model'
         id = Column(String(60), primary_key=True)
         created_at = Column(DateTime, default=datetime.utcnow)
         updated_at = Column(DateTime, default=datetime.utcnow)
