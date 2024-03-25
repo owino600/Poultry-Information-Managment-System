@@ -6,6 +6,7 @@ from models.inventory import Inventory
 from models.medication_operations import Medication
 from models.sales import Sales
 from datetime import datetime
+import models
 
 
 classes = {"Inventory": Inventory, "BaseModel": BaseModel, "Sales":Sales,
