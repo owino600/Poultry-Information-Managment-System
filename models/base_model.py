@@ -8,7 +8,10 @@ from sqlalchemy.ext.declarative import declarative_base
 
 time_format = "%Y-%m-%dT%H:%M:%S.%f"
 
-Base = declarative_base() if models.storage_t == "db" else object
+if models.storage_t == "db":
+    Base = declarative_base()
+else:
+    object
 
 
 class BaseModel(Base):
