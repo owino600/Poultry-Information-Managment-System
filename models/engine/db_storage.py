@@ -27,7 +27,11 @@ class DBStorage:
                                         PIMS_MYSQL_HOST,
                                         PIMS_MYSQL_DB))
         
-        self.reload()
+        Base.metadata.create_all(self.__engine)
+        sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        Session = scoped_session(sess_factory)
+        self.__session = Session()
+        
     def all(self, cls=None):
         """create query on the current database session"""
         new_dict = {}
@@ -50,11 +54,9 @@ class DBStorage:
             self.__session.delete(objs)
     def reload(self):
         """relaod data from database"""
-        from models.base_model import Base
-        Base.metadata.create_all(self.__engine)
-        sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        Session = scoped_session(sess_factory)
-        self.__session = Session()
+        self.__session.remove()
+        self.__session = scoped_session(sessionmaker(bind=self.__engine, expire_on_commit=False))
+        
     def close(self):
         """close private session attribute"""
         self.__session.remove()
