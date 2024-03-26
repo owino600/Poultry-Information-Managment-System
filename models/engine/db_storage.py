@@ -20,12 +20,15 @@ class DBStorage:
         PIMS_MYSQL_PWD = getenv('PIMS_MYSQL_PWD')
         PIMS_MYSQL_HOST = getenv('PIMS_MYSQL_HOST')
         PIMS_MYSQL_DB = getenv('PIMS_MYSQL_DB')
-        
+        STORAGE_T = getenv('STORAGE_T')
         self.__engine = create_engine('mysql+mysqlconnector://{}:{}@{}/{}'.format
                                       (PIMS_MYSQL_USER,
                                         PIMS_MYSQL_PWD,
                                         PIMS_MYSQL_HOST,
-                                        PIMS_MYSQL_DB))
+                                        PIMS_MYSQL_DB,))
+        
+        if STORAGE_T == "test":
+            Base.metadata.drop_all(self.__engine)
         
         if models.storage_t == "db":
             Base.metadata.create_all(self.__engine)
