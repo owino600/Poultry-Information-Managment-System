@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ poultry management console"""
 from models import engine
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 from models.inventory import Inventory
 from models.medication_operations import Medication
 from models.sales import Sales
@@ -14,8 +14,8 @@ import models
 classes = {"Inventory": Inventory, "BaseModel": BaseModel, "Sales":Sales,
            "Medication": Medication}
 
-if not isinstance(BaseModel, object):
-    BaseModel.metadata.create_all(engine)
+if not isinstance(Base, object):
+    Base.metadata.create_all(engine)
 
 class FileStorage:
     """serializes instances to a JSON file & deserializes back to instances"""
