@@ -26,6 +26,8 @@ class DBStorage:
                                         PIMS_MYSQL_PWD,
                                         PIMS_MYSQL_HOST,
                                         PIMS_MYSQL_DB))
+        
+        self.reload()
     def all(self, cls=None):
         """create query on the current database session"""
         new_dict = {}
