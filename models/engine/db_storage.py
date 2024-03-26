@@ -40,7 +40,7 @@ class DBStorage:
         """create query on the current database session"""
         new_dict = {}
         if cls:
-            obj = self.__session.query(cls.__table__).all()
+            obj = self.__session.query(cls).all()
             for objs in obj:
                 key = objs.__class__.__name__ + '.' + objs.id
                 new_dict[key] = objs
