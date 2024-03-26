@@ -106,7 +106,7 @@ def add_medication(db_storage):
 
 def view_medication_operations(db_storage):
     # Query all medication operations
-    medications = db_storage.all(models.medication_operations)
+    medications = db_storage.all(models.medication_operations.Medication)
 
     # Print each medication operation
     for medication in medications.values():
