@@ -11,7 +11,7 @@ time_format = "%Y-%m-%dT%H:%M:%S.%f"
 if models.storage_t == "db":
     Base = declarative_base()
 else:
-    object
+    Base = object
 
 
 class BaseModel(Base):
