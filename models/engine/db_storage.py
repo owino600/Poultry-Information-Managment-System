@@ -30,11 +30,7 @@ class DBStorage:
         if STORAGE_T == "test":
             Base.metadata.drop_all(self.__engine)
         
-        if models.storage_t == "db":
-            Base.metadata.create_all(self.__engine)
-            sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
-            Session = scoped_session(sess_factory)
-            self.__session = Session()
+        self.reload()
         
     def all(self, cls=None):
         """create query on the current database session"""
@@ -58,8 +54,10 @@ class DBStorage:
             self.__session.delete(objs)
     def reload(self):
         """relaod data from database"""
-        self.__session.remove()
-        self.__session = scoped_session(sessionmaker(bind=self.__engine, expire_on_commit=False))
+        Base.metadata.create_all(self.__engine)
+        sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        Session = scoped_session(sess_factory)
+        self.__session = Session()
         
     def close(self):
         """close private session attribute"""
