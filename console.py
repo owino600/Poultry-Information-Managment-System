@@ -70,7 +70,8 @@ def add_sale(db_storage):
 
 def view_sales(db_storage):
     """Query all sales"""
-    sales = db_storage.all(models.sales.Sales)
+    sales_table = models.sales.Sales.__table__
+    sales = db_storage.all(sales_table)
     """Print each sale"""
     for sale in sales.values():
         print(f"Sales ID: {sale.Sales_id}")
