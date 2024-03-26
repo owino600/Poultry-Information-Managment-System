@@ -10,60 +10,48 @@ from models.engine.db_storage import DBStorage
 import models
 
 
-classes = {"Inventory": Inventory, "BaseModel": BaseModel, "Sales":Sales,
+classes = {"Inventory": Inventory, "BaseModel": BaseModel, "Sales": Sales,
            "Medication": Medication}
 
 if not isinstance(Base, object):
     Base.metadata.create_all(engine)
 
-class FileStorage:
-    """serializes instances to a JSON file & deserializes back to instances"""
-
-    __file_path = "file.json"
-    # dictionary - empty but will store all objects by <class name>.id
-    __objects = {}
-     
 def main():
-    
     db_storage = DBStorage()
     while True:
         print("Welcome to the Poultry Information Management System (PIMS)")
         print("Please select an option:")
         print("1. View Inventory")
-        print("2. add Sales")
+        print("2. Add Sales")
         print("3. View Sales")
-        print("4. Add medication")
+        print("4. Add Medication")
         print("5. View Medication Operations")
         print("6. Exit")
 
         option = input("> ")
 
         if option == "1":
-
-            # Call the function to view inventory
-            view_inventory()
+            view_inventory(db_storage)
         elif option == "2":
-            # Call the function to view sales
-            add_sale()
+            add_sale(db_storage)
         elif option == "3":
-            view_sales()
+            view_sales(db_storage)
         elif option == "4":
-            # Call the function to view medication operations
-            add_medication()
+            add_medication(db_storage)
         elif option == "5":
-            view_medication_operations()
+            view_medication_operations(db_storage)
         elif option == "6":
             break
         else:
             print("Invalid option. Please try again.")
-def view_inventory():
-    # Use your Inventory class here
+
+def view_inventory(db_storage):
     pass
-def add_sale():
-    session = storage
+
+def add_sale(db_storage):
     """Query all sales"""
-    sales = session.all(models.sales)
-    
+    sales = db_storage.all(models.sales)
+
     Sales_id = input("Please enter the Sales ID: ")
     sales_date = input("Please enter the Sales Date: ")
     buyer_name = input("Please enter the Buyer Name: ")
@@ -77,12 +65,12 @@ def add_sale():
     new_sale = models.sales.Sales(sales_id=Sales_id, sales_date=sales_date, buyer_name=buyer_name, poultry_id=poultry_id, quantity=quantity, unit_price=unit_price, total_price=total_price, payment_method=payment_method)
 
     # Add the new Sale object to the storage
-    session.new(new_sale)
-    session.save()
-def view_sales():
-    session = models.storage
+    db_storage.new(new_sale)
+    db_storage.save()
+
+def view_sales(db_storage):
     """Query all sales"""
-    sales = session.all(models.sales.Sales)
+    sales = db_storage.all(models.sales.Sales)
     """Print each sale"""
     for sale in sales.values():
         print(f"Sales ID: {sale.Sales_id}")
@@ -94,11 +82,10 @@ def view_sales():
         print(f"Total Price: {sale.total_price}")
         print(f"Payment Method: {sale.payment_method}")
         print("------------------------")
-        pass
-def add_medication():
-    session = storage
-    medication_operation = session.all(models.medication_operations)
-    
+
+def add_medication(db_storage):
+    medication_operation = db_storage.all(models.medication_operations)
+
     print("Please enter the medication details:")
     poultry_id = input("Enter poultry id: ")
     species = input("Enter species: ")
@@ -111,17 +98,15 @@ def add_medication():
     withdrawalperiod = input("Enter withdrawal period: ")
     supplier = input("Enter supplier: ")
     cost = int(input("Enter cost: "))
-    
-    new_medication = Medication(poultry_id=poultry_id, species=species, quantity=quantity, ageweeks=ageweeks, dateofmedication=dateofmedication, medecation_name=medecation_name, dosage=dosage, medicationtype=medicationtype, withdrawalperiod=withdrawalperiod, supplier=supplier, cost=cost)
-    
-    session.new(new_medication)
-    session.save()
 
-    
-def view_medication_operations():
-    session = storage
+    new_medication = Medication(poultry_id=poultry_id, species=species, quantity=quantity, ageweeks=ageweeks, dateofmedication=dateofmedication, medecation_name=medecation_name, dosage=dosage, medicationtype=medicationtype, withdrawalperiod=withdrawalperiod, supplier=supplier, cost=cost)
+
+    db_storage.new(new_medication)
+    db_storage.save()
+
+def view_medication_operations(db_storage):
     # Query all medication operations
-    medications = session.all(models.medication_operations)
+    medications = db_storage.all(models.medication_operations)
 
     # Print each medication operation
     for medication in medications.values():
@@ -137,6 +122,6 @@ def view_medication_operations():
         print(f"Supplier: {medication.supplier}")
         print(f"Cost: {medication.cost}")
         print("------------------------")
-    pass
+
 if __name__ == "__main__":
     main()
