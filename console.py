@@ -7,6 +7,7 @@ from models.medication_operations import Medication
 from models.sales import Sales
 from datetime import datetime
 from models import storage
+from models.engine.db_storage import DBStorage
 import models
 
 
@@ -25,6 +26,9 @@ class FileStorage:
     __objects = {}
      
 def main():
+    
+    db_storage = DBStorage()
+    db_storage.reload()
     while True:
         print("Welcome to the Poultry Information Management System (PIMS)")
         print("Please select an option:")
