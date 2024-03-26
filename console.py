@@ -6,7 +6,6 @@ from models.inventory import Inventory
 from models.medication_operations import Medication
 from models.sales import Sales
 from datetime import datetime
-from models import storage
 from models.engine.db_storage import DBStorage
 import models
 
@@ -20,14 +19,13 @@ if not isinstance(Base, object):
 class FileStorage:
     """serializes instances to a JSON file & deserializes back to instances"""
 
-    # string - path to the JSON file
     __file_path = "file.json"
     # dictionary - empty but will store all objects by <class name>.id
     __objects = {}
      
 def main():
     
-    storage = DBStorage()
+    db_storage = DBStorage()
     while True:
         print("Welcome to the Poultry Information Management System (PIMS)")
         print("Please select an option:")
