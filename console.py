@@ -27,8 +27,7 @@ class FileStorage:
      
 def main():
     
-    db_storage = DBStorage()
-    db_storage.reload()
+    
     while True:
         print("Welcome to the Poultry Information Management System (PIMS)")
         print("Please select an option:")
