@@ -40,20 +40,18 @@ class DBStorage:
         """create query on the current database session"""
         new_dict = {}
         if cls:
-            obj = self.__session.query(cls).all()
+            obj = self.__session.query(cls.__table__).all()
             for objs in obj:
                 key = objs.__class__.__name__ + '.' + objs.id
-                new_dict[key] = objs 
+                new_dict[key] = objs
         else:
             for clss in classes.values():
-                obj = self.__session.query(clss).all()
+                obj = self.__session.query(clss.__table__).all()
                 for objs in obj:
                     key = objs.__class__.__name__ + '.' + objs.id
                     new_dict[key] = objs 
-        return (new_dict)
-    def new(self, objs):
-        """add object to the current database session"""
-        self.__session.add(objs)
+        return new_dict
+        
     def save(self):
         """commit all changes"""
         self.__session.commit()
