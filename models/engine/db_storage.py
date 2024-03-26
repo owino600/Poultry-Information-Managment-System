@@ -26,15 +26,15 @@ class DBStorage:
                                         PIMS_MYSQL_PWD,
                                         PIMS_MYSQL_HOST,
                                         PIMS_MYSQL_DB,))
+        Base.metadata.create_all(self.__engine)
+        sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        Session = scoped_session(sess_factory)
+        self.__session = Session()
         
         if STORAGE_T == "test":
             Base.metadata.drop_all(self.__engine)
             Base.metadata.create_all(self.__engine)
-        
-            Base.metadata.create_all(self.__engine)
-            sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
-            Session = scoped_session(sess_factory)
-            self.__session = Session()
+            
         
     def all(self, cls=None):
         """create query on the current database session"""
