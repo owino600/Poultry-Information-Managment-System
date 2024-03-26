@@ -29,7 +29,7 @@ class DBStorage:
         
         if STORAGE_T == "test":
             Base.metadata.drop_all(self.__engine)
-        
+            Base.metadata.create_all(self.__engine)
         
             Base.metadata.create_all(self.__engine)
             sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
