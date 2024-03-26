@@ -39,9 +39,14 @@ class DBStorage:
     def all(self, cls=None):
         """create query on the current database session"""
         new_dict = {}
-        for clss in classes:
-            if cls is None or cls is classes[clss] or cls is clss:
-                obj = self.__session.query(classes[clss]).all()
+        if cls:
+            obj = self.__session.query(cls).all()
+            for objs in obj:
+                key = objs.__class__.__name__ + '.' + objs.id
+                new_dict[key] = objs 
+        else:
+            for clss in classes.values():
+                obj = self.__session.query(clss).all()
                 for objs in obj:
                     key = objs.__class__.__name__ + '.' + objs.id
                     new_dict[key] = objs 
