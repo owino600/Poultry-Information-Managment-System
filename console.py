@@ -6,6 +6,7 @@ from models.inventory import Inventory
 from models.medication_operations import Medication
 from models.sales import Sales
 from datetime import datetime
+from models import storage
 import models
 
 
@@ -58,7 +59,7 @@ def view_inventory():
     # Use your Inventory class here
     pass
 def add_sale():
-    session = models.storage
+    session = storage
     """Query all sales"""
     sales = session.all(models.sales)
     
@@ -94,7 +95,7 @@ def view_sales():
         print("------------------------")
         pass
 def add_medication():
-    session = models.storage
+    session = storage
     medication_operation = session.all(models.medication_operations)
     
     print("Please enter the medication details:")
@@ -117,7 +118,7 @@ def add_medication():
 
     
 def view_medication_operations():
-    session = models.storage
+    session = storage
     # Query all medication operations
     medications = session.all(models.medication_operations)
 
