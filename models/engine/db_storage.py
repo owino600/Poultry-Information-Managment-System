@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """Class DBStorage"""
-import models
 from models.base_model import BaseModel, Base
 from models.medication_operations import Medication
 from models.sales import Sales
+import models
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from os import getenv
@@ -20,25 +20,38 @@ class DBStorage:
         PIMS_MYSQL_PWD = getenv('PIMS_MYSQL_PWD')
         PIMS_MYSQL_HOST = getenv('PIMS_MYSQL_HOST')
         PIMS_MYSQL_DB = getenv('PIMS_MYSQL_DB')
-        PIMS_ENV = getenv('PIMS_ENV')
+        STORAGE_T = getenv('STORAGE_T')
         self.__engine = create_engine('mysql+mysqlconnector://{}:{}@{}/{}'.format
                                       (PIMS_MYSQL_USER,
                                         PIMS_MYSQL_PWD,
                                         PIMS_MYSQL_HOST,
-                                        PIMS_MYSQL_DB))
+                                        PIMS_MYSQL_DB,))
+        
+        sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        Session = scoped_session(sess_factory)
+        self.__session = Session()
+        
+        if STORAGE_T == "test":
+            Base.metadata.drop_all(self.__engine)
+            Base.metadata.create_all(self.__engine)
+            
+        
     def all(self, cls=None):
         """create query on the current database session"""
         new_dict = {}
-        for clss in classes:
-            if cls is None or cls is classes[clss] or cls is clss:
-                obj = self.__session.query(classes[clss]).all()
+        if cls:
+            obj = self.__session.query(cls).all()
+            for objs in obj:
+                key = objs.__class__.__name__ + '.' + objs.id
+                new_dict[key] = objs
+        else:
+            for clss in classes.values():
+                obj = self.__session.query(clss.__table__).all()
                 for objs in obj:
                     key = objs.__class__.__name__ + '.' + objs.id
                     new_dict[key] = objs 
-        return (new_dict)
-    def new(self, objs):
-        """add object to the current database session"""
-        self.__session.add(objs)
+        return new_dict
+        
     def save(self):
         """commit all changes"""
         self.__session.commit()
@@ -48,10 +61,9 @@ class DBStorage:
             self.__session.delete(objs)
     def reload(self):
         """relaod data from database"""
-        Base.metadata.create_all(self.__engine)
-        sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        Session = scoped_session(sess_factory)
-        self.__session = Session
+        self.__session.remove()
+        self.__session = scoped_session(sessionmaker(bind=self.__engine, expire_on_commit=False))
+        
     def close(self):
         """close private session attribute"""
         self.__session.remove()

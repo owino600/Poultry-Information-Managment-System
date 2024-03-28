@@ -1,15 +1,16 @@
 #!/usr/bin/python3
 
 from models.base_model import BaseModel
-import models
-from sqlalchemy import Column, String, Integer, Float, Enum
 from datetime import datetime
+import models
+from sqlalchemy import Column, String, Integer, Float, Enum, DateTime
+
 
 
 class Sales(BaseModel):
     __tablename__ = 'sales'
     Sales_id = Column(Integer(), nullable=False)
-    sales_date = Column(datetime, default=datetime.utcnow)
+    sales_date = Column(DateTime, default=datetime.utcnow)
     buyer_name = Column(String(60), nullable=False)
     poultry_id = Column(Integer(), nullable=False)
     quantity = Column(Integer(), nullable=False)

@@ -8,11 +8,16 @@ from sqlalchemy.ext.declarative import declarative_base
 
 time_format = "%Y-%m-%dT%H:%M:%S.%f"
 
-Base = declarative_base() if models.storage_t == "db" else object
+if models.storage_t == "db":
+    Base = declarative_base()
+else:
+    Base = object
 
 
 class BaseModel(Base):
     """The BaseModel class for poultry management"""
+    __abstract__ = True
+    
     if models.storage_t == "db":
         id = Column(String(60), primary_key=True)
         created_at = Column(DateTime, default=datetime.utcnow)

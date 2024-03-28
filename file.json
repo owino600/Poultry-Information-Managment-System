@@ -1,1 +1,6 @@
-{"Inventory.001": {"id": "001", "created_at": "2024-03-25T11:49:25.439832", "updated_at": "2024-03-25T11:49:25.443108", "__class__": "Inventory"}, "Sales.001": {"id": "001", "created_at": "2024-03-25T11:49:25.443207", "updated_at": "2024-03-25T11:49:25.443243", "__class__": "Sales"}, "Medication.001": {"id": "001", "created_at": "2024-03-25T11:49:25.443280", "updated_at": "2024-03-25T11:49:25.443300", "__class__": "Medication"}, "Sales.607141e3-167c-4bec-b4a5-05adca10e522": {"id": "607141e3-167c-4bec-b4a5-05adca10e522", "created_at": "2024-03-25T11:49:52.632922", "updated_at": "2024-03-25T11:49:52.633089", "__class__": "Sales"}, "Sales.096da98d-9798-43a5-8057-53a67164706e": {"id": "096da98d-9798-43a5-8057-53a67164706e", "created_at": "2024-03-25T12:12:11.368958", "updated_at": "2024-03-25T12:12:11.369111", "__class__": "Sales"}, "Sales.ec6369be-1f12-43e3-99a4-0fc66d51b7b7": {"id": "ec6369be-1f12-43e3-99a4-0fc66d51b7b7", "created_at": "2024-03-25T13:39:16.991008", "updated_at": "2024-03-25T13:39:16.991119", "__class__": "Sales"}}
+{
+    "storage_t": "db",
+    "Inventory.001": {},
+    "Sales.001": {},
+    "Medication.001": {}
+}
